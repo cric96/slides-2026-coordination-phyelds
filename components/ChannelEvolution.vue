@@ -14,7 +14,7 @@ const size = 11
 const source = { x: 1, y: 9 }
 const target = { x: 9, y: 1 }
 const stage = ref(0)
-const stageNames = ['endpoints', 'source gradient', 'target gradient', 'minimum path', 'channel']
+const stageNames = ['endpoints', 'source gradient', 'target gradient', 'broadcast d(S,T)', 'channel']
 
 const cells: Cell[] = Array.from({ length: size * size }, (_, index) => ({
   x: index % size,
@@ -118,21 +118,12 @@ function cellStyle(cell: Cell) {
   }
 
   if (stage.value === 3) {
-    if (isPath(cell)) {
-      return {
-        background: '#d97706',
-        borderColor: '#d97706',
-        color: '#fff',
-      }
-    }
-    const distT = gradientDistance(cell)
-    const distS = sourceDistance(cell)
-    const strengthT = Math.max(0.1, 1 - distT / 13)
-    const strengthS = Math.max(0.1, 1 - distS / 13)
+    // broadcast: the source-to-target distance d(S,T) is shared network-wide,
+    // so every device ends up holding the SAME constant value -> a homogeneous field.
     return {
-      background: `rgba(15, 76, 92, ${0.04 + Math.max(strengthS, strengthT) * 0.12})`,
-      borderColor: 'rgba(15, 76, 92, 0.08)',
-      color: '#10202b',
+      background: 'rgba(15, 76, 92, 0.5)',
+      borderColor: 'rgba(15, 76, 92, 0.45)',
+      color: '#fff',
     }
   }
 

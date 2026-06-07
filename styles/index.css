@@ -879,7 +879,7 @@ body,
 .collage-frame885 {
   width: 8.5rem;
   height: 8.5rem;
-  right: -2rem;
+  right: 0.75rem;
   top: 11.5rem;
   transform: rotate(-4deg);
   z-index: 5;

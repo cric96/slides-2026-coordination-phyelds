@@ -48,22 +48,20 @@ class: stage-slide
 
 <v-clicks>
 
-- Engineering <span class="u-solid-teal">emergent global behavior</span> from purely local interactions is notoriously challenging.
-  - Nodes rely on peer-to-peer contact, execute asynchronously, and lack a global view.
-- Consequently, large-scale networks are inherently characterized by strict <span class="mark-orange">locality</span>, <span class="mark-teal">asynchrony</span>, and <span class="mark-green">partial information</span>.
-- Traditional, device-centric programming conflates <span class="mark-teal">high-level collective logic</span> with low-level details like message passing and state synchronization.
-- As networks scale, <span class="u-solid-orange">reasoning about global system state</span> becomes an engineering bottleneck.
+- The goal: engineer <span class="u-solid-teal">emergent global behavior</span> from purely <span class="mark-teal">local interactions</span>.
+- The setting is inherently <span class="mark-orange">open</span> (devices join and leave), <span class="mark-teal">dynamic</span> (topology and conditions keep changing), and gives each node only <span class="mark-green">partial information</span>.
+- Yet traditional <span class="u-solid-orange">device-centric</span> code tangles collective logic with low-level mechanics — message passing, retries, state synchronization.
 
 </v-clicks>
 
 <div class="three-up">
   <div class="soft-card" v-click>
-    <div class="card-title">Target Scenarios</div>
-    <div class="card-text">Sensor networks, edge-cloud systems, robot swarms, federated learning deployments.</div>
+    <div class="card-title">Where it matters</div>
+    <div class="card-text">Sensor networks, edge-cloud systems, robot swarms, federated learning.</div>
   </div>
   <div class="soft-card" v-click>
-    <div class="card-title">The engineering tax</div>
-    <div class="card-text">Coordination logic leaks <span class="mark-orange">everywhere</span>, so collective behavior is hard to express and maintain.</div>
+    <div class="card-title">The bottleneck</div>
+    <div class="card-text">As the network grows, reasoning about <span class="u-solid-orange">global system state</span> becomes the real engineering cost.</div>
   </div>
   <div class="soft-card accent-card" v-click>
     <div class="card-title">Needed abstraction</div>
@@ -79,38 +77,22 @@ layout: default
 class: stage-slide
 ---
 
-<div class="slide-shell">
+<div class="slide-shell" style="gap: 0.6rem;">
 
 # Aggregate Computing
-## A macroprogramming top-down vision
+## A macroprogramming top-down approach to coordination
 
-<div class="visual-box visual-box-wide" style="margin: 0.2rem auto 0.6rem;">
+<div class="visual-box visual-box-wide" style="margin: 0 auto 0.2rem;">
   <AggregateFlow />
 </div>
 
 <v-clicks>
 
-- The program specifies an <span class="u-solid-teal">evolving computational field</span>.<sup class="cite">[1,3]</sup>
-  - This is a dynamic, distributed data structure that emerges from local interactions to represent the global system state.
+- The program specifies an <span class="u-solid-teal">evolving computational field</span><sup class="cite">[1,3]</sup> — a dynamic, distributed data structure emerging from local interactions to represent the global system state.
 - Individual devices execute the code locally, keeping execution decentralized.
-- This macro-abstraction enables developers to reason <span class="mark-teal">globally</span> about behaviors emerging from local actions.
+- This macro-abstraction lets developers reason <span class="mark-teal">globally</span> about behaviors emerging from local actions.
 
 </v-clicks>
-
-<div class="comparison-grid">
-  <div class="comparison-card" v-click>
-    <div class="card-title">Device-centric view</div>
-    <div class="card-text">How should node <span class="mono">i</span> manage its local state and messages?</div>
-  </div>
-  <div class="comparison-card" v-click>
-    <div class="card-title">Aggregate view</div>
-    <div class="card-text">How can computational fields be composed into a coherent <span class="u-solid-teal">collective behavior</span>?</div>
-  </div>
-  <div class="comparison-card highlight" v-click>
-    <div class="card-title">Result</div>
-    <div class="card-text">Drastically simplified coordination logic and direct alignment with <span class="mark-orange">system-wide intent</span>.</div>
-  </div>
-</div>
 
 </div>
 
@@ -154,58 +136,49 @@ class: viz-slide
 
 ---
 layout: default
-class: viz-slide
----
-
-<div class="slide-shell">
-
-# Fields emerge through repetition
-
-<v-clicks>
-
-- Expressing a <span class="u-solid-teal">global coordination intent</span> over a static network topology...
-- ...triggers a local, self-organizing <span class="mark-orange">transient propagation phase</span>...
-- ...which quickly converges and stabilizes into the <span class="mark-green">desired global result</span>.
-
-</v-clicks>
-
-<div class="visual-box visual-box-wide">
-  <FieldEvolution />
-</div>
-
-</div>
-
----
-layout: default
 class: stage-slide
 ---
 
 <div class="slide-shell">
 
 # The Gap
-## Aggregate computing is a natural fit for distributed ML...
+## Aggregate computing and modern ML are made for each other...
 
 <v-clicks>
 
-- The synergy is <span class="u-solid-teal">bidirectional</span>:
-  - Aggregate computing enables scalable <span class="mark-teal">distributed learning</span> — federated learning and multi-agent RL.
-  - Machine learning enables <span class="mark-orange">data-driven adaptation</span> inside aggregate programs.
-- Coordination is exactly the hard part in <span class="mark-teal">RL / MARL</span> and <span class="mark-green">federated</span> settings — where aggregate computing shines.
+- The hardest part of <span class="mark-teal">RL / MARL</span> and <span class="mark-green">federated learning</span> is exactly <span class="u-solid-teal">coordination</span><sup class="cite">[9,10]</sup> — and that is precisely what aggregate computing does best.
+- The synergy runs <span class="u-solid-orange">both ways</span>: AC brings scalable distributed learning, while ML brings <span class="mark-orange">data-driven adaptation</span> into aggregate programs.
+- It's no paper idea — the paradigm already has <span class="u-solid-teal">mature, real-world implementations</span>:
 
 </v-clicks>
 
+<div style="display: flex; gap: 1rem; justify-content: center; align-items: stretch; margin: 0.5rem auto 0.3rem;" v-click>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.1rem; padding: 0.5rem 1.3rem; background: rgba(255,255,255,0.9); border: 1px solid rgba(16,32,43,0.1); border-top: 3px solid var(--deck-teal); border-radius: 0.5rem; box-shadow: 0 4px 14px rgba(15,23,42,0.05);">
+    <span style="font-weight: 700; color: var(--deck-teal); font-size: 1.1rem;">Protelis</span>
+    <span style="font-size: 0.72rem; color: var(--deck-muted); letter-spacing: 0.03em;">Java</span>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.1rem; padding: 0.5rem 1.3rem; background: rgba(255,255,255,0.9); border: 1px solid rgba(16,32,43,0.1); border-top: 3px solid var(--deck-orange); border-radius: 0.5rem; box-shadow: 0 4px 14px rgba(15,23,42,0.05);">
+    <span style="font-weight: 700; color: var(--deck-orange); font-size: 1.1rem;">ScaFi</span>
+    <span style="font-size: 0.72rem; color: var(--deck-muted); letter-spacing: 0.03em;">Scala</span>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.1rem; padding: 0.5rem 1.3rem; background: rgba(255,255,255,0.9); border: 1px solid rgba(16,32,43,0.1); border-top: 3px solid var(--deck-green); border-radius: 0.5rem; box-shadow: 0 4px 14px rgba(15,23,42,0.05);">
+    <span style="font-weight: 700; color: var(--deck-green); font-size: 1.1rem;">FCPP</span>
+    <span style="font-size: 0.72rem; color: var(--deck-muted); letter-spacing: 0.03em;">C++</span>
+  </div>
+</div>
+
 <div class="three-up">
   <div class="soft-card" v-click>
-    <div class="card-title">Mature AC ecosystems</div>
-    <div class="card-text">Protelis, ScaFi, and FCPP prove the paradigm works — but they are <span class="mark-orange">JVM / C++</span> centric.</div>
+    <div class="card-title">...but JVM / C++ only</div>
+    <div class="card-text">Those proven ecosystems all live on the <span class="mark-orange">JVM / C++</span>.</div>
   </div>
   <div class="soft-card" v-click>
     <div class="card-title">ML lives in Python</div>
-    <div class="card-text">AI/ML practitioners and roboticists work in <span class="mark-teal">Python</span>, not in JVM languages.</div>
+    <div class="card-text">AI/ML practitioners and roboticists work in <span class="mark-teal">Python</span>.</div>
   </div>
   <div class="soft-card accent-card" v-click>
-    <div class="card-title">Today's tools don't help</div>
-    <div class="card-text">Without native field calculus in Python, the two communities stay <span class="u-solid-orange">apart</span>.</div>
+    <div class="card-title">So the two stay apart</div>
+    <div class="card-text">Without native field calculus in Python, the communities never really meet.</div>
   </div>
 </div>
 
@@ -219,7 +192,7 @@ class: stage-slide
 <div class="slide-shell">
 
 # Bridging the Gap
-## ...so we bring field calculus natively into Python — <span class="mark-orange">Phyelds</span>
+## ...so we bring field calculus natively into Python
 
 <div class="three-up" style="margin-top: 1rem;">
   <div class="soft-card" v-click>
@@ -241,6 +214,11 @@ class: stage-slide
   <span class="mark-teal" style="font-weight: 600; margin-right: 0.8rem;">PyTorch & JAX</span>
   <span class="mark-orange" style="font-weight: 600; margin-right: 0.8rem;">Jupyter</span>
   <span class="mark-green" style="font-weight: 600;">VMAS & Mujoco</span>
+</div>
+
+<div style="display: flex; gap: 1.6rem; align-items: center; justify-content: center; margin-top: 0.6rem;" v-click>
+  <QrCard title="Repository" url="https://github.com/phyelds/phyelds" short="github.com/.../phyelds" style="transform: scale(0.9);" />
+  <QrCard title="Binder Demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" short="Interactive demo" style="transform: scale(0.9);" />
 </div>
 
 </div>
@@ -310,12 +288,14 @@ class: code-slide
 # Core API 2: remember and neighbors
 
 <div class="section-lead">
-  Two primitives cover local state and neighbor exchange.
+  Two primitives, two dimensions of field interaction — <span class="mark-teal">time</span> and <span class="mark-orange">space</span>.
 </div>
 
 <div class="split-grid" style="grid-template-columns: 1fr 1fr; align-items: start; gap: 1.5rem; margin-top: 0.2rem;">
 
 <div>
+
+<div style="font-weight: 600; color: var(--deck-teal); margin-bottom: 0.4rem;"> Temporal interaction <span style="font-weight: 500; color: var(--deck-muted);">— how a field evolves over time </span></div>
 
 ```python {all|3|4|all}
 @aggregate
@@ -325,23 +305,20 @@ def counter():
     return value
 ```
 
-<div class="code-caption" style="margin-top: 0.5rem;">
-  <code class="mono mark-teal">remember</code> is the Pythonic face of <span class="mono">rep</span>.
-</div>
 </div>
 
 <div v-click="4">
 
+<div style="font-weight: 600; color: var(--deck-orange); margin-bottom: 0.4rem;"> Spatial interaction <span style="font-weight: 500; color: var(--deck-muted);">— query &amp; aggregation over neighbors</span></div>
+
 ```python {all|3|4|all}
 @aggregate
-def spread(my_value):
+def max_of(my_value):
     nbr_values = neighbors(my_value)
     return max(nbr_values.values())
 ```
 
-<div class="code-caption" style="margin-top: 0.5rem;">
-  <code class="mono mark-orange">neighbors</code> returns an aligned neighborhood field that behaves like a Python object.
-</div>
+
 </div>
 
 </div>
@@ -355,16 +332,16 @@ class: stage-slide
 
 <div class="slide-shell">
 
-# Core API 3: small core, rich building blocks
+# Core API 3: Rich building blocks
 
 <div class="three-up" style="margin-top: 1.2rem; gap: 1.2rem;">
   <div class="soft-card" v-click style="padding: 1rem 1.1rem; min-height: 11rem;">
-    <div class="card-title" style="color: var(--deck-teal); font-weight: 600; border-bottom: 2px solid var(--deck-teal-soft); padding-bottom: 0.35rem; margin-bottom: 0.8rem; font-size: 1.05rem; letter-spacing: 0.01em;">Spatiotemporal Tracking</div>
+    <div class="card-title" style="color: var(--deck-teal); font-weight: 600; border-bottom: 2px solid var(--deck-teal-soft); padding-bottom: 0.35rem; margin-bottom: 0.8rem; font-size: 1.05rem; letter-spacing: 0.01em;">Space, Time & Distance</div>
     <div class="card-text" style="font-size: 0.85rem; line-height: 1.5; color: var(--deck-muted);">
       <ul style="padding-left: 1.1rem; margin: 0;">
-        <li>Track positions & distances</li>
-        <li>Align local clocks & rounds</li>
-        <li>Ground logic in physical space</li>
+        <li><strong>Device:</strong> <code class="mono">local_id</code>, <code class="mono">local_position</code>, <code class="mono">sense</code></li>
+        <li><strong>Time:</strong> <code class="mono">time</code>, round, <code class="mono">decay</code></li>
+        <li><strong>Distances:</strong> Euclidean / hop-count</li>
       </ul>
     </div>
   </div>
@@ -373,9 +350,9 @@ class: stage-slide
     <div class="card-title" style="color: var(--deck-orange); font-weight: 600; border-bottom: 2px solid var(--deck-orange-soft); padding-bottom: 0.35rem; margin-bottom: 0.8rem; font-size: 1.05rem; letter-spacing: 0.01em;">Spread & Aggregation</div>
     <div class="card-text" style="font-size: 0.85rem; line-height: 1.5; color: var(--deck-muted);">
       <ul style="padding-left: 1.1rem; margin: 0;">
-        <li>Disseminate info network-wide</li>
-        <li>Aggregate local edge data</li>
-        <li>Drive spatial feedback loops</li>
+        <li><strong>Spread:</strong> <code class="mono">distance_to</code>, <code class="mono">broadcast</code></li>
+        <li><strong>Collect:</strong> <code class="mono">collect_with</code>, <code class="mono">count_nodes</code></li>
+        <li><strong>Gossip:</strong> <code class="mono">gossip_max</code> / <code class="mono">min</code></li>
       </ul>
     </div>
   </div>
@@ -384,20 +361,14 @@ class: stage-slide
     <div class="card-title" style="color: var(--deck-green); font-weight: 600; border-bottom: 2px solid rgba(47, 107, 91, 0.15); padding-bottom: 0.35rem; margin-bottom: 0.8rem; font-size: 1.05rem; letter-spacing: 0.01em;">Regional Organization</div>
     <div class="card-text" style="font-size: 0.85rem; line-height: 1.5; color: var(--deck-muted);">
       <ul style="padding-left: 1.1rem; margin: 0;">
-        <li>Elect leaders dynamically</li>
-        <li>Partition swarms into cells</li>
-        <li>Coordinate regional learning</li>
+        <li><strong>Elect:</strong> <code class="mono">elect_leaders</code></li>
+        <li><strong>Partition:</strong> Voronoi regions</li>
+        <li><strong>Coordinate:</strong> <code class="mono">collect</code> → <code class="mono">broadcast</code></li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="value-strip" v-click style="margin-top: 1.8rem; padding: 0.75rem 1.1rem;">
-  <div>
-    <span class="value-label">High-Level Composition:</span>
-    These primitives serve as building blocks for <span class="u-solid-orange">complex coordination</span>, from decentralized <span class="mark-teal">federated learning</span> to cohesive <span class="mark-green">swarm flocking</span>.
-  </div>
-</div>
 
 </div>
 
@@ -416,14 +387,9 @@ class: stage-slide
 
 <v-clicks>
 
-- **Goal:** Establish a robust communication pipeline between a <span class="mark-green">source</span> ($S$) and a <span class="mark-orange">target</span> ($T$).
-- Composes simple building blocks:<sup class="cite">[2,5]</sup>
-  - Local geometric views (<span class="mark-teal">neighbor distances</span>)
-  - Target-rooted <span class="u-solid-orange">distance gradient</span>
-  - Shortest path <span class="mark-teal">routing</span>
-  - Spatial thresholding to <span class="mark-teal">adjust width</span>
-- **Self-Stabilizing:** Dynamically adapts to <span class="mark-orange">node failures</span>, <span class="mark-teal">message loss</span>, and <span class="mark-green">physical movement</span>.
-- **Redundancy:** Width parameter enables <span class="mark-teal">multipath routing</span> to overcome local communication gaps.
+- **Goal:** a robust channel from a <span class="mark-green">source</span> ($S$) to a <span class="mark-orange">target</span> ($T$).
+- **Built** from simple blocks<sup class="cite">[2,5]</sup>: neighbor distances → <span class="u-solid-orange">distance gradient</span> → shortest path → <span class="mark-teal">width</span>.
+- **Self-stabilizing & redundant:** adapts to failures, message loss, and movement; width gives <span class="mark-teal">multipath routing</span>.
 
 </v-clicks>
 
@@ -508,7 +474,7 @@ class: code-slide
 
 # Distributed Federated Learning via Phyelds<sup class="cite">[7,8,9]</sup>
 
-```python {all|3-4|5|6|7-8|9-10|11|all}
+```python {all|3-4|5|6|7|8|9|10|11|all}
 @aggregate
 def client(initial_model_params):
     set_value, value = remember((initial_model_params, 0))
@@ -524,23 +490,34 @@ def client(initial_model_params):
 
 <div class="code-caption" style="margin-top: 0.55rem; font-size: 0.76rem; line-height: 1.45; min-height: 2.8rem;">
   <span v-if="$clicks === 0">
-    <strong style="color: var(--deck-teal);">high-level view</strong> — Self-Organizing Federated Learning (SOFL) maps data similarities to physical and logical coordinates.
+    <strong style="color: var(--deck-teal);">high-level view</strong> — each node trains locally and aggregates with neighbors to evolve a global model across rounds.
   </span>
   <span v-else-if="$clicks === 1">
-    <strong style="color: var(--deck-teal);">state persistence</strong> — (field of models) Devices remember their local training parameters overtime.
+    <strong style="color: var(--deck-teal);">state persistence</strong> — each device remembers its local model (a field of models) across rounds.
   </span>
   <span v-else-if="$clicks === 2">
-    <strong style="color: var(--deck-orange);">local training</strong> — Each node performs standard local learning using its private on-board dataset.
+    <strong style="color: var(--deck-orange);">local training</strong> — each node trains on its private on-board dataset.
   </span>
   <span v-else-if="$clicks === 3">
-    <strong style="color: var(--deck-teal);">relationship mapping</strong> — Similarity distances are derived dynamically based on local and neighbor validation loss.
+    <strong style="color: var(--deck-teal);">relationship mapping</strong> — similarity distances are derived from local and neighbor validation loss.
   </span>
   <span v-else-if="$clicks === 4">
-    <strong style="color: var(--deck-green);">regional clustering</strong> — Dynamic regional leaders are elected to form using similarity computed via local models,;
-    <strong style="color: var(--deck-green);">aggregation & sharing</strong> — Model weights are collected up the regional tree, averaged, and broadcasted back to update the cluster.
+    <strong style="color: var(--deck-green);">regional leaders</strong> — dynamic leaders are elected from model similarity, partitioning the network into regions.
+  </span>
+  <span v-else-if="$clicks === 5">
+    <strong style="color: var(--deck-green);">potential field</strong> — each node computes its distance to the regional leader.
+  </span>
+  <span v-else-if="$clicks === 6">
+    <strong style="color: var(--deck-orange);">aggregation</strong> — models are collected up the regional tree and summed.
+  </span>
+  <span v-else-if="$clicks === 7">
+    <strong style="color: var(--deck-orange);">sharing</strong> — the averaged model is broadcast back across the region.
+  </span>
+  <span v-else-if="$clicks === 8">
+    <strong style="color: var(--deck-teal);">state update</strong> — the new regional model is stored for the next round.
   </span>
   <span v-else>
-    <strong style="color: var(--deck-orange);">state update</strong> — The aggregated model parameters are sent back to each device, incorporating regioanl-wise knowledge.
+    <strong style="color: var(--deck-green);">put together</strong> — local training + self-organizing regional aggregation = decentralized federated learning.
   </span>
 </div>
 
@@ -611,17 +588,16 @@ class: end-slide
 
 <div class="thanks-left">
   <PhyeldsLogo style="max-width: 140px; max-height: 140px; margin-bottom: 0.2rem;"></PhyeldsLogo>
-  <div class="thanks-title">Grazie!</div>
+  <div class="thanks-title">Thank You!</div>
   <div class="thanks-subtitle">
-    Python-Native Declarative Coordination for <br>
-    Heterogeneous Multi-Agent Systems
+     A Pythonic Framework for Aggregate Computing
   </div>
   <div class="thanks-qr-row">
     <QrCard title="Repository" url="https://github.com/phyelds/phyelds" />
     <QrCard title="Interactive demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" />
   </div>
   <div class="thanks-details">
-    <strong>Contact:</strong> phyelds@example.com · <strong>GitHub:</strong> phyelds/phyelds
+    <strong>Contact:</strong> gianluca.aguzzi@unibo.it
   </div>
 </div>
 

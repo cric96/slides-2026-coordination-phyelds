@@ -5,25 +5,25 @@
 <template>
   <div class="flocking-shell">
     <div class="flocking-card">
-      <div class="flocking-title">Frame 1 (Chaos)</div>
+      <div class="flocking-title">(Chaos)</div>
       <div class="flocking-img-container">
         <img src="/vmas-frame-0001.png" class="flocking-img" alt="Frame 1: Initial chaotic state" />
       </div>
     </div>
     <div class="flocking-card">
-      <div class="flocking-title">Frame 21 (Early)</div>
+      <div class="flocking-title">(Early Coordination)</div>
       <div class="flocking-img-container">
         <img src="/vmas-frame-0021.png" class="flocking-img" alt="Frame 21: Early alignment" />
       </div>
     </div>
     <div class="flocking-card">
-      <div class="flocking-title">Frame 157 (Mid)</div>
+      <div class="flocking-title">(Cohesion)</div>
       <div class="flocking-img-container">
         <img src="/vmas-frame-0157.png" class="flocking-img" alt="Frame 157: Cohesive clusters" />
       </div>
     </div>
     <div class="flocking-card">
-      <div class="flocking-title">Frame 885 (Aligned)</div>
+      <div class="flocking-title">(Aligned)</div>
       <div class="flocking-img-container">
         <img src="/vmas-frame-0885.png" class="flocking-img" alt="Frame 885: Fully converged flocking" />
       </div>
