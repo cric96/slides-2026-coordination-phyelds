@@ -1,0 +1,18 @@
+{
+  "name": "phyelds-slidev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open false",
+    "build": "slidev build slides.md && node scripts/postbuild.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "latest",
+    "@fontsource/ibm-plex-sans": "latest",
+    "@slidev/cli": "latest",
+    "qrcode": "latest"
+  },
+  "dependencies": {
+    "@slidev/theme-default": "^0.25.0"
+  }
+}
