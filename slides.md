@@ -5,7 +5,7 @@ titleTemplate: '%s'
 colorSchema: light
 routerMode: hash
 mdc: true
-download: false
+download: true
 selectable: true
 layout: default
 class: first-slide
