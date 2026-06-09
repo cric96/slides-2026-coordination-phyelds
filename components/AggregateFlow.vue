@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 // Every stage stays "live" and breathes on its own independent timing,
 // so the elements animate simultaneously rather than sweeping left-to-right.
+
+// Progressive reveal: stages fade in as the presenter clicks through the
+// matching bullet items. Without a `click` prop the whole pipeline is shown.
+const props = defineProps<{ click?: number }>()
+const c = computed(() => props.click ?? 99)
+const shown = (threshold: number) => c.value >= threshold
 
 // A small irregular network of devices.
 const nodes = [
@@ -22,7 +30,7 @@ const edges = [
 <template>
   <div class="agg-flow">
     <!-- 1. Network of devices -->
-    <div class="agg-stage is-active">
+    <div class="agg-stage is-active" :class="{ 'agg-hidden': !shown(0) }">
       <svg viewBox="0 0 128 128" class="agg-canvas">
         <line
           v-for="(e, i) in edges"
@@ -42,10 +50,10 @@ const edges = [
       <span class="agg-sub">neighbour interaction</span>
     </div>
 
-    <div class="agg-arrow is-active">→</div>
+    <div class="agg-arrow is-active" :class="{ 'agg-hidden': !shown(1) }">→</div>
 
     <!-- 2. Continuum -->
-    <div class="agg-stage is-active">
+    <div class="agg-stage is-active" :class="{ 'agg-hidden': !shown(1) }">
       <svg viewBox="0 0 128 128" class="agg-canvas">
         <defs>
           <radialGradient id="contGrad" cx="42%" cy="40%" r="75%">
@@ -66,10 +74,10 @@ const edges = [
       <span class="agg-sub">value per device, over a continuum</span>
     </div>
 
-    <div class="agg-arrow is-active">→</div>
+    <div class="agg-arrow is-active" :class="{ 'agg-hidden': !shown(2) }">→</div>
 
     <!-- 3. Composition of fields -->
-    <div class="agg-stage is-active">
+    <div class="agg-stage is-active" :class="{ 'agg-hidden': !shown(2) }">
       <svg viewBox="0 0 128 128" class="agg-canvas">
         <defs>
           <radialGradient id="fieldA" cx="50%" cy="50%" r="50%">
@@ -89,10 +97,10 @@ const edges = [
       <span class="agg-sub">functional operators</span>
     </div>
 
-    <div class="agg-arrow is-active">→</div>
+    <div class="agg-arrow is-active" :class="{ 'agg-hidden': !shown(3) }">→</div>
 
     <!-- 4. Global effect -->
-    <div class="agg-stage agg-stage-global is-active">
+    <div class="agg-stage agg-stage-global is-active" :class="{ 'agg-hidden': !shown(3) }">
       <svg viewBox="0 0 128 128" class="agg-canvas">
         <defs>
           <linearGradient id="linkGrad" x1="30" y1="98" x2="98" y2="30" gradientUnits="userSpaceOnUse">
@@ -155,6 +163,14 @@ const edges = [
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 0 4px rgba(15, 76, 92, 0.1);
   transform: translateY(-2px);
+}
+
+/* Not-yet-revealed stages/arrows: fade out but keep their slot so the
+   row never reflows as the presenter clicks through. */
+.agg-hidden {
+  opacity: 0;
+  pointer-events: none;
+  animation-play-state: paused;
 }
 
 .agg-canvas {
