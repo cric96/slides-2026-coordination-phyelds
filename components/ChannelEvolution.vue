@@ -65,10 +65,6 @@ function lineDistance(cell: Cell) {
   return Math.abs(cell.x + cell.y - 10) / Math.sqrt(2)
 }
 
-function isPath(cell: Cell) {
-  return Math.abs(cell.x + cell.y - 10) < 0.65 && cell.x >= 1 && cell.x <= 9 && cell.y >= 1 && cell.y <= 9
-}
-
 function isChannel(cell: Cell) {
   return lineDistance(cell) <= 1.55 && cell.x >= 0 && cell.x <= 10 && cell.y >= 0 && cell.y <= 10
 }
@@ -127,19 +123,13 @@ function cellStyle(cell: Cell) {
     }
   }
 
-  // stage === 4 (channel)
-  if (isPath(cell)) {
-    return {
-      background: '#c65f05',
-      borderColor: '#c65f05',
-      color: '#fff',
-    }
-  }
+  // stage === 4 (channel): the channel is a boolean field, so every cell
+  // inside it holds the same value and gets the same color.
   if (isChannel(cell)) {
     return {
-      background: 'rgba(217, 119, 6, 0.42)',
-      borderColor: 'rgba(217, 119, 6, 0.4)',
-      color: '#10202b',
+      background: '#d97706',
+      borderColor: '#d97706',
+      color: '#fff',
     }
   }
   return {
