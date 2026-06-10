@@ -582,7 +582,9 @@ def client(initial_model_params):
     set_value((area_model, tick + 1))
 ```
 
-<div class="code-caption" style="margin-top: 0.55rem; font-size: 0.76rem; line-height: 1.45; min-height: 2.8rem;">
+<div style="display: grid; grid-template-columns: 1fr 350px; gap: 1.2rem; align-items: center; margin-top: 0.4rem;">
+
+<div class="code-caption" style="font-size: 0.78rem; line-height: 1.45;">
   <span v-if="$clicks === 0">
     <strong style="color: var(--deck-teal);">high-level view</strong> — each node trains locally and aggregates with neighbors to evolve a global model across rounds.
   </span>
@@ -613,6 +615,16 @@ def client(initial_model_params):
   <span v-else>
     <strong style="color: var(--deck-green);">put together</strong> — local training + self-organizing regional aggregation = decentralized federated learning.
   </span>
+</div>
+
+<div class="visual-box" style="margin: 0; padding: 0.3rem;">
+  <img
+    :src="'/federated-learning/' + ['00_overview','01_state','02_training','03_similarity','04_leaders','05_potential','06_aggregation','07_sharing','08_update','09_together'][Math.min($clicks, 9)] + '.png'"
+    style="width: 100%; border-radius: 10px;"
+    alt="Federated learning step visualization"
+  />
+</div>
+
 </div>
 
 </div>
