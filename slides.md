@@ -446,7 +446,7 @@ class: stage-slide
 
 - **Goal:** a robust channel from a <span class="mark-green">source</span> ($S$) to a <span class="mark-orange">target</span> ($T$).
 - **Built** from simple blocks<sup class="cite">[2,5]</sup>: neighbor distances → <span class="u-solid-orange">distance gradient</span> → shortest path → <span class="mark-teal">width</span>.
-- **Self-stabilizing & redundant:** adapts to failures, message loss, and movement; width gives <span class="mark-teal">multipath routing</span>.
+- **Self-stabilizing & redundant:** adapts to failures, message loss, and movement.
 
 </v-clicks>
 
@@ -618,11 +618,7 @@ def client(initial_model_params):
 </div>
 
 <div class="visual-box" style="margin: 0; padding: 0.3rem;">
-  <img
-    :src="'/federated-learning/' + ['00_overview','01_state','02_training','03_similarity','04_leaders','05_potential','06_aggregation','07_sharing','08_update','09_together'][Math.min($clicks, 9)] + '.png'"
-    style="width: 100%; border-radius: 10px;"
-    alt="Federated learning step visualization"
-  />
+  <FederatedLearningStep :click="$clicks" />
 </div>
 
 </div>
@@ -805,7 +801,7 @@ class: end-slide
 
 <div class="collage-container">
   <div class="collage-item collage-arch">
-    <img src="./public/phyelds-arch.png" class="collage-img" alt="Global Architecture" />
+    <BaseImg src="phyelds-arch.png" class="collage-img" alt="Global Architecture" />
   </div>
   <div class="collage-item collage-gradient">
     <div class="collage-scale-wrapper">
@@ -813,7 +809,7 @@ class: end-slide
     </div>
   </div>
   <div class="collage-item collage-frame1">
-    <img src="./public/vmas-frame-0001.png" class="collage-img" alt="Initial state" />
+    <BaseImg src="vmas-frame-0001.png" class="collage-img" alt="Initial state" />
   </div>
   <div class="collage-item collage-channel">
     <div class="collage-scale-wrapper">
@@ -821,7 +817,7 @@ class: end-slide
     </div>
   </div>
   <div class="collage-item collage-frame885">
-    <img src="./public/vmas-frame-0885.png" class="collage-img" alt="Stable state" />
+    <BaseImg src="vmas-frame-0885.png" class="collage-img" alt="Stable state" />
   </div>
 </div>
 
