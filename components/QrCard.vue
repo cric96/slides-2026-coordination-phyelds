@@ -2,18 +2,22 @@
 import { onMounted, ref } from 'vue'
 import QRCode from 'qrcode'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   title: string
   url: string
   short?: string
-}>()
+  /** QR image side in rem */
+  size?: number
+}>(), {
+  size: 4.4,
+})
 
 const qrDataUrl = ref('')
 
 onMounted(async () => {
   qrDataUrl.value = await QRCode.toDataURL(props.url, {
     margin: 1,
-    width: 220,
+    width: 360,
     color: {
       dark: '#10202b',
       light: '#00000000',
@@ -23,7 +27,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <a :href="url" target="_blank" rel="noreferrer" class="qr-card-link-wrapper">
+  <a :href="url" target="_blank" rel="noreferrer" class="qr-card-link-wrapper" :style="{ '--qr-size': `${props.size}rem` }">
     <div class="qr-card-shell">
       <div class="qr-card-image-wrap">
         <img v-if="qrDataUrl" :src="qrDataUrl" :alt="`QR code for ${title}`" class="qr-card-image">
@@ -56,8 +60,8 @@ onMounted(async () => {
 }
 
 .qr-card-image-wrap {
-  width: 5.2rem;
-  height: 5.2rem;
+  width: calc(var(--qr-size, 4.4rem) + 0.8rem);
+  height: calc(var(--qr-size, 4.4rem) + 0.8rem);
   display: grid;
   place-items: center;
   border-radius: 0;
@@ -66,8 +70,8 @@ onMounted(async () => {
 
 .qr-card-image,
 .qr-card-placeholder {
-  width: 4.4rem;
-  height: 4.4rem;
+  width: var(--qr-size, 4.4rem);
+  height: var(--qr-size, 4.4rem);
 }
 
 .qr-card-placeholder {

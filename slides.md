@@ -19,6 +19,11 @@ defaults:
   <div class="cover-badge badge-reusable" role="img" aria-label="Artifacts Evaluated — Reusable"></div>
 </div>
 
+<div class="cover-qr-row" style="position: absolute; top: 1.4rem; left: 1.6rem; display: flex; gap: 1rem; align-items: center; z-index: 10;">
+  <QrCard title="Repository" url="https://github.com/phyelds/phyelds" short="github.com/.../phyelds" :size="6.5" />
+  <QrCard title="Binder Demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" short="Interactive demo" :size="6.5" />
+</div>
+
 <div class="cover-center-shell">
   <div class="cover-logo-wrap">
     <PhyeldsLogo />
@@ -34,11 +39,6 @@ defaults:
 
   <p class="cover-kicker">COORDINATION 2026 · Urbino · 11 June 2026</p>
 
-  <div class="cover-qr-row" style="display: flex; gap: 1.5rem; align-items: center; justify-content: center; margin-top: -2.5rem;">
-    <QrCard title="Repository" url="https://github.com/phyelds/phyelds" short="github.com/.../phyelds" style="transform: scale(0.65);" />
-    <QrCard title="Binder Demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" short="Interactive demo" style="transform: scale(0.65);" />
-  </div>
-  
 </div>
 
 ---
@@ -274,8 +274,8 @@ class: stage-slide
 </div>
 
 <div style="display: flex; gap: 1.6rem; align-items: center; justify-content: center; margin-top: 0.6rem;" v-click>
-  <QrCard title="Repository" url="https://github.com/phyelds/phyelds" short="github.com/.../phyelds" style="transform: scale(0.9);" />
-  <QrCard title="Binder Demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" short="Interactive demo" style="transform: scale(0.9);" />
+  <QrCard title="Repository" url="https://github.com/phyelds/phyelds" short="github.com/.../phyelds" :size="5.4" />
+  <QrCard title="Binder Demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" short="Interactive demo" :size="5.4" />
 </div>
 
 </div>
@@ -791,8 +791,8 @@ class: end-slide
      A Pythonic Framework for Aggregate Computing
   </div>
   <div class="thanks-qr-row">
-    <QrCard title="Repository" url="https://github.com/phyelds/phyelds" />
-    <QrCard title="Interactive demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" />
+    <QrCard title="Repository" url="https://github.com/phyelds/phyelds" :size="5.8" />
+    <QrCard title="Interactive demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" :size="5.8" />
   </div>
   <div class="thanks-details">
     <strong>Contact:</strong> gianluca.aguzzi@unibo.it
