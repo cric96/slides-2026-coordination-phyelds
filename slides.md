@@ -92,9 +92,12 @@ class: stage-slide
 
 <v-clicks>
 
-- Over that network, the program manipulates an <span class="u-solid-teal">evolving computational field</span><sup class="cite">[1,3]</sup> — a distributed data structure mapping every device to a value across the continuum.
-- Richer behaviour is <span class="u-solid-orange">composed</span> from simpler fields through functional operators (<code>f ∘ g</code>) — modular, reusable coordination building blocks.
-- Each device runs only <span class="mark-orange">local</span> code, yet a <span class="mark-teal">global self-organizing behaviour emerges</span> — so developers reason about the whole from local rules.
+- Over a distributed network, an aggregate program manipulates an <span class="u-solid-teal">evolving computational field</span><sup class="cite">[1,3]</sup> 
+  - a distributed data structure mapping every device to a value across the continuum.
+- Richer behaviour is <span class="u-solid-orange">composed</span> from simpler fields through functional operators (<code>f ∘ g</code>)
+  -  modular, reusable coordination building blocks.
+- Each device runs only <span class="mark-orange">local</span> code, yet a <span class="mark-teal">global self-organizing behaviour emerges</span> 
+  - so developers reason about the whole from local rules.
 
 </v-clicks>
 
@@ -226,7 +229,7 @@ class: stage-slide
   </div>
   <div v-click style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-green);">ML lives in Python</div>
-    <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">AI/ML practitioners and roboticists work in <span class="mark-teal">Python</span>.</div>
+    <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">AI/ML practitioners and (some of) roboticists work in <span class="mark-teal">Python</span>.</div>
   </div>
   <div v-click style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-orange);">So the two stay apart</div>
