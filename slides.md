@@ -779,8 +779,9 @@ class: end-slide
 <div class="thanks-grid">
 
 <div class="thanks-left">
-  <PhyeldsLogo style="max-width: 140px; max-height: 140px; margin-bottom: 0.2rem;"></PhyeldsLogo>
   <div class="thanks-title">Thank You!</div>
+  <PhyeldsLogo style="max-width: 140px; max-height: 140px; margin-bottom: 0.2rem;"></PhyeldsLogo>
+  
   <div class="thanks-subtitle">
      A Pythonic Framework for Aggregate Computing
   </div>
