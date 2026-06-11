@@ -50,13 +50,11 @@ class: stage-slide
 
 # Why coordinating large networks is still hard?
 
-<v-clicks>
-
 - The goal: engineer <span class="u-solid-teal">emergent global behavior</span> from purely <span class="mark-teal">local interactions</span>.
 - The setting is inherently <span class="mark-orange">open</span> (devices join and leave), <span class="mark-teal">dynamic</span> (topology and conditions keep changing), and gives each node only <span class="mark-green">partial information</span>.
 - Yet traditional <span class="u-solid-orange">device-centric</span> code tangles collective logic with low-level mechanics — message passing, retries, state synchronization.
 
-</v-clicks>
+
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 0.7rem;">
   <div v-click style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
@@ -153,20 +151,20 @@ class: stage-slide
 # A Decade of Applications
 ## Aggregate computing already has a proven track record
 
-<div style="margin-top: 0.2rem; color: var(--deck-muted); font-size: 0.92rem;" v-click>
+<div style="margin-top: 0.2rem; color: var(--deck-muted); font-size: 0.92rem;">
 Born for <span class="u-solid-teal">large-scale coordination</span>, it has been applied across many domains where <span class="mark-teal">global behavior</span> emerges from <span class="mark-green">local interactions</span><sup class="cite">[1,2]</sup>:
 </div>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 0.7rem;">
-  <div v-click style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-teal);">Sensor Networks</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Distributed <span class="mark-teal">sensing</span> &amp; monitoring over dense device fields.</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-green);">Swarm Robotics</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Collective movement, flocking &amp; <span class="mark-green">self-organizing</span> teams.</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-orange);">Smart Cities &amp; IoT</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Crowd-aware services across the <span class="mark-orange">edge–cloud continuum</span>.</div>
   </div>
@@ -176,15 +174,17 @@ Born for <span class="u-solid-teal">large-scale coordination</span>, it has been
 And two <span class="u-solid-orange">emerging frontiers</span> where the synergy with modern AI runs <span class="u-solid-orange">both ways</span><sup class="cite">[9,10]</sup>:
 </div>
 
+<v-clicks>
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; max-width: 820px; margin: 0.5rem auto 0;">
-  <div v-click style="border-left: 3px solid var(--deck-green); padding-left: 0.65rem; font-size: 0.9rem; line-height: 1.4;">
+  <div style="border-left: 3px solid var(--deck-green); padding-left: 0.65rem; font-size: 0.9rem; line-height: 1.4;">
     <span style="font-weight: 700; color: var(--deck-green);">Federated Learning</span> — AC orchestrates <span class="mark-green">scalable, decentralized</span> model training.
   </div>
-  <div v-click style="border-left: 3px solid var(--deck-teal); padding-left: 0.65rem; font-size: 0.9rem; line-height: 1.4;">
+  <div  style="border-left: 3px solid var(--deck-teal); padding-left: 0.65rem; font-size: 0.9rem; line-height: 1.4;">
     <span style="font-weight: 700; color: var(--deck-teal);">Multi-Agent RL</span> — ML brings <span class="mark-teal">data-driven adaptation</span> into aggregate programs.
   </div>
 </div>
 
+</v-clicks>
 <Cites refs="1,2,9,10" />
 
 </div>
@@ -199,13 +199,11 @@ class: stage-slide
 # The Gap
 ## ...but those two frontiers are hard to reach in practice
 
-<v-clicks>
 
 - The hardest part of <span class="mark-green">federated learning</span> and <span class="mark-teal">RL / MARL</span> is exactly <span class="u-solid-teal">coordination</span> — precisely what aggregate computing does best.
 - So pushing those frontiers should be easy... yet a <span class="u-solid-orange">practical barrier</span> gets in the way — and it starts with the <span class="mark-orange">tooling</span>.
 - The paradigm does have <span class="u-solid-teal">mature, real-world implementations</span> — but all of them target the JVM / C++:
 
-</v-clicks>
 
 <div style="display: flex; gap: 3rem; justify-content: center; align-items: baseline; margin: 0.7rem auto 0.4rem;" v-click>
   <div style="text-align: center;">
@@ -250,21 +248,21 @@ class: stage-slide
 ## ...so we bring field calculus natively into Python
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 1rem;">
-  <div v-click style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-teal);">Pythonic API</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Coordination logic looks like standard, idiomatic Python instead of a functional DSL.</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
+  <div  style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-green);">Lightweight Core</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">A micro-runtime built with modular, reusable, and highly extensible internals.</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-orange);">Integration-First</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Designed to connect with <span class="mark-teal">ML libraries</span>, <span class="mark-orange">notebooks</span>, and <span class="mark-green">simulators</span>.</div>
   </div>
 </div>
 
-<div style="margin-top: 1.2rem; max-width: 820px; margin-left: auto; margin-right: auto;" v-click>
+<div style="margin-top: 1.2rem; max-width: 820px; margin-left: auto; margin-right: auto;">
   <div style="border-left: 3px solid var(--deck-teal); padding-left: 0.65rem; font-size: 0.9rem; line-height: 1.4;">
     <span style="font-weight: 700; color: var(--deck-teal);">Target ecosystem</span> —
     <span class="mark-teal" style="font-weight: 600;">PyTorch &amp; JAX</span> ·
@@ -273,7 +271,7 @@ class: stage-slide
   </div>
 </div>
 
-<div style="display: flex; gap: 1.6rem; align-items: center; justify-content: center; margin-top: 0.6rem;" v-click>
+<div style="display: flex; gap: 1.6rem; align-items: center; justify-content: center; margin-top: 0.6rem;">
   <QrCard title="Repository" url="https://github.com/phyelds/phyelds" short="github.com/.../phyelds" :size="5.4" />
   <QrCard title="Binder Demo" url="https://mybinder.org/v2/gh/phyelds/phyelds-examples/HEAD?urlpath=%2Fdoc%2Ftree%2F%2Fbinder%2Fphyelds-example.ipynb" short="Interactive demo" :size="5.4" />
 </div>
@@ -392,7 +390,7 @@ class: stage-slide
 # Core API 3: Rich building blocks
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 1.2rem;">
-  <div v-click style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-teal); font-size: 1.05rem; margin-bottom: 0.5rem;">Space, Time &amp; Distance</div>
     <div style="font-size: 0.82rem; line-height: 1.45; color: var(--deck-muted);">
       <ul style="padding-left: 1.1rem; margin: 0;">
@@ -403,7 +401,7 @@ class: stage-slide
     </div>
   </div>
 
-  <div v-click style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-green); font-size: 1.05rem; margin-bottom: 0.5rem;">Spread &amp; Aggregation</div>
     <div style="font-size: 0.82rem; line-height: 1.45; color: var(--deck-muted);">
       <ul style="padding-left: 1.1rem; margin: 0;">
@@ -414,7 +412,7 @@ class: stage-slide
     </div>
   </div>
 
-  <div v-click style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-orange); font-size: 1.05rem; margin-bottom: 0.5rem;">Regional Organization</div>
     <div style="font-size: 0.82rem; line-height: 1.45; color: var(--deck-muted);">
       <ul style="padding-left: 1.1rem; margin: 0;">
@@ -442,13 +440,9 @@ class: stage-slide
 
 <div>
 
-<v-clicks>
-
 - **Goal:** a robust channel from a <span class="mark-green">source</span> ($S$) to a <span class="mark-orange">target</span> ($T$).
 - **Built** from simple blocks<sup class="cite">[2,5]</sup>: neighbor distances → <span class="u-solid-orange">distance gradient</span> → shortest path → <span class="mark-teal">width</span>.
 - **Self-stabilizing & redundant:** adapts to failures, message loss, and movement.
-
-</v-clicks>
 
 </div>
 
@@ -535,15 +529,15 @@ class: stage-slide
 ## Collaborative learning without ever sharing the data
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 0.9rem;">
-  <div v-click style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
+  <div  style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-teal);">Federated Learning (FL)</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Many devices <span class="mark-teal">collaboratively train</span> a shared model while keeping their data <span class="mark-green">local and private</span><sup class="cite">[8]</sup>.</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
+  <div  style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-green);">The catch</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Classic FL leans on a <span class="mark-orange">central server</span> to coordinate rounds — a single point of failure and a <span class="u-solid-orange">scalability bottleneck</span>.</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
+  <div  style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-orange);">Self-Organizing FL</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Devices <span class="u-solid-teal">autonomously form federations</span><sup class="cite">[9,10]</sup>, each learning a specialized model tuned to <span class="mark-green">local (non-IID)</span> data.</div>
   </div>
@@ -635,20 +629,20 @@ class: stage-slide
 # Multi-Agent Reinforcement Learning
 ## Collective behavior needs a world to live in
 
-<div style="margin-top: 0.2rem; color: var(--deck-muted); font-size: 0.92rem;" v-click>
+<div style="margin-top: 0.2rem; color: var(--deck-muted); font-size: 0.92rem;">
 Many agents learn to act <span class="mark-teal">together</span> in a shared environment — but a learned policy is only as trustworthy as the <span class="u-solid-teal">world you can test it in</span>:
 </div>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 0.7rem;">
-  <div v-click style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-teal); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-teal);">Multi-Agent Learning typically Needs coordination</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Agents must align their actions from <span class="mark-teal">local observations</span> (via communication or shared environment signals).</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
+  <div style="border-top: 2px solid var(--deck-green); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-green);">Behavior lives in interaction</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">Collective dynamics only emerge by <span class="mark-green">running</span> them — you need a simulated world to observe and <span class="u-solid-teal">verify</span> them.</div>
   </div>
-  <div v-click style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
+  <div  style="border-top: 2px solid var(--deck-orange); padding-top: 0.45rem;">
     <div style="font-weight: 700; color: var(--deck-orange);">VMAS is one such world</div>
     <div style="font-size: 0.82rem; color: var(--deck-muted); line-height: 1.35;">A <span class="mark-orange">GPU-accelerated</span>, <span class="u-solid-orange">differentiable</span> 2D physics engine<sup class="cite">[11]</sup> for MARL &amp; swarm robotics.</div>
   </div>
@@ -673,17 +667,17 @@ class: viz-slide
 
 # Integrating Phyelds with VMAS
 
-<v-clicks>
 
 - Phyelds ships a native simulator, but is designed to <span class="u-solid-orange">plug into external frameworks</span> through thin bindings
 - <span class="u-solid-orange">The integration</span> needs just two components: a <span class="mark-teal">runner</span> that, each step, executes agent actions and feeds observations back; and an <span class="mark-teal">environment wrapper</span> that initializes agents and updates their state.
 - We validate it by reproducing <span class="mark-green">Vicsek flocking</span><sup class="cite">[12]</sup> as an aggregate program — agents align with neighbors within a radius, and <span class="u-solid-teal">collective motion emerges</span>.
 
-</v-clicks>
 
+<v-clicks>
 <div class="visual-box visual-box-wide">
   <FlockingStages />
 </div>
+</v-clicks>
 
 <Cites refs="11,12" />
 
