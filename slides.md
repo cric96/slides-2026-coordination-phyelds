@@ -200,7 +200,7 @@ class: stage-slide
 ## ...but those two frontiers are hard to reach in practice
 
 
-- The hardest part of <span class="mark-green">federated learning</span> and <span class="mark-teal">RL / MARL</span> is exactly <span class="u-solid-teal">coordination</span> — precisely what aggregate computing does best.
+- <span class="mark-green">Federated learning</span> and <span class="mark-teal">RL / MARL</span> need <span class="u-solid-teal">coordination</span> policy, so where aggregate computing shines.
 - So pushing those frontiers should be easy... yet a <span class="u-solid-orange">practical barrier</span> gets in the way — and it starts with the <span class="mark-orange">tooling</span>.
 - The paradigm does have <span class="u-solid-teal">mature, real-world implementations</span> — but all of them target the JVM / C++:
 
@@ -779,6 +779,7 @@ class: end-slide
 <div class="thanks-grid">
 
 <div class="thanks-left">
+  <div class="thanks-title">Thank You!</div>
   <div class="thanks-title">Thank You!</div>
   <PhyeldsLogo style="max-width: 140px; max-height: 140px; margin-bottom: 0.2rem;"></PhyeldsLogo>
   
