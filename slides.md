@@ -780,7 +780,6 @@ class: end-slide
 
 <div class="thanks-left">
   <div class="thanks-title">Thank You!</div>
-  <div class="thanks-title">Thank You!</div>
   <PhyeldsLogo style="max-width: 140px; max-height: 140px; margin-bottom: 0.2rem;"></PhyeldsLogo>
   
   <div class="thanks-subtitle">
